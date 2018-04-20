@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Butter from 'buttercms'
 import {Helmet} from "react-helmet"
-import {API_TOKEN} from './utils/butter_token.js'
-
-const butter = Butter(API_TOKEN);
+import *  as butterAPI from '../api.js'
 
 class BlogPost extends Component {
 
@@ -16,18 +14,14 @@ class BlogPost extends Component {
   }
 
   componentWillMount() {
-    butter.content.retrieve(['homepage_headline']).then(function(response) {
-        console.log(response)
-      });
-
     let slug = this.props.params.slug;
 
-    butter.post.retrieve(slug).then((resp) => {
+    butterAPI.fetchPost(slug).then((data) => {
       this.setState({
         loaded: true,
-        post: resp.data.data
+        post: data
       })
-    });
+    })
   }
 
   render() {

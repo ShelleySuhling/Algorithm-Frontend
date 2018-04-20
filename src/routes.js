@@ -2,8 +2,8 @@ import React from 'react';
 import { Router, IndexRoute, Route } from 'react-router';
 
 import App from './App';
-import BlogHome from './BlogHome';
-import BlogPost from './BlogPost';
+import BlogHome from './containers/BlogHome';
+import BlogPost from './containers/BlogPost';
 
 const Routes = (props) => (
   <Router {...props}>
