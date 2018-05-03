@@ -39,6 +39,7 @@ class BlogPost extends Component {
                 <meta name="og:image" content={post.featured_image} />
               </Helmet>
               <img className="Post-image" src={post.featured_image}></img>
+              <div className="Post-title-underlay"></div>
               <div className="Post-title">{post.title}</div>
               <div className="Post-body" dangerouslySetInnerHTML={{__html: post.body}} />
           </MuiThemeProvider>

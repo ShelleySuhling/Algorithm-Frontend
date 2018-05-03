@@ -5,6 +5,7 @@ import App from './App';
 import BlogHome from './containers/BlogHome';
 import BlogPost from './containers/BlogPost';
 
+
 const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App}>
