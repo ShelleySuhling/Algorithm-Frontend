@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  font-family: 'Roboto', sans-serif;
+  overflow-x: hidden;
+
 }
 
 .App-logo {
@@ -22,7 +25,51 @@
   font-size: large;
 }
 
+.App-body {
+  margin: 50px 200px;
+}
+
+.Card-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  text-decoration: none;
+
+}
+
+.Card-featured-image {
+  height: 120px;
+}
+
+.Card-title{
+  font-size: 20px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.Post-title{
+  font-size: 35px;
+  margin: -50px 0 0;
+  opacity: 1;
+  position: absolute;
+}
+
+.Post-body{
+  text-align: left;
+}
+
+.Post-image{
+  margin: -50px 0px 0px -200px;
+  height: 200px;
+  width: 200%;
+  object-fit: cover;
+  opacity: 0.35;
+  z-index: 1;
 }

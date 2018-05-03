@@ -3,6 +3,7 @@ import { Link } from 'react-router'
 import Butter from 'buttercms'
 import *  as butterAPI from '../api.js'
 
+import PostPreview from '../components/PostPreview'
 
 class BlogHome extends Component {
 
@@ -15,8 +16,7 @@ class BlogHome extends Component {
   }
 
   componentWillMount() {
-    let page = this.props.params.page || 1;
-
+    var page = 1
     butterAPI.fetchAllPosts(page).then((data) => {
       console.log(data)
       this.setState({
@@ -28,33 +28,22 @@ class BlogHome extends Component {
 
   componentWillReceiveProps(nextProps) {
     this.setState({loaded: false});
-
-    let page = nextProps.params.page || 1;
-
-    this.fetchPosts(page)
   }
 
   render() {
-    if (this.state.loaded) {
-      const { next_page, previous_page } = this.state.resp.meta;
- 
+    if (this.state.loaded) { 
       return (
         <div>
           {this.state.resp.data.map((post) => {
             return (
               <div key={post.slug}>
-                <Link to={`/post/${post.slug}`}>{post.title}</Link>
+                <PostPreview post={post}/>
+                {/* <Link to={`/post/${post.slug}`}>{post.title}</Link> */}
               </div>
             )
           })}
 
           <br />
-
-          <div>
-            {previous_page && <Link to={`/p/${previous_page}`}>Prev</Link>}
-
-            {next_page && <Link to={`/p/${next_page}`}>Next</Link>}
-          </div>
         </div>
       );
     } else {

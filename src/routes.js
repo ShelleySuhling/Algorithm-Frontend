@@ -9,7 +9,6 @@ const Routes = (props) => (
   <Router {...props}>
     <Route path="/" component={App}>
       <IndexRoute component={BlogHome} />
-      <Route path="/p/:page" component={BlogHome} />
       <Route path="/post/:slug" component={BlogPost} />
     </Route>
   </Router>
