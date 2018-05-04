@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import Butter from 'buttercms'
 import {Helmet} from "react-helmet"
-import Divider from 'material-ui/Divider';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 import *  as butterAPI from '../api.js'
 
 class BlogPost extends Component {
@@ -17,7 +14,7 @@ class BlogPost extends Component {
   }
 
   componentWillMount() {
-    let slug = this.props.params.slug;
+    let slug = this.props.match.params.slug;
 
     butterAPI.fetchPost(slug).then((data) => {
       this.setState({
@@ -30,7 +27,6 @@ class BlogPost extends Component {
   render() {
     if (this.state.loaded) {
       const post = this.state.post;
-
       return (
           <MuiThemeProvider>
               <Helmet>
@@ -38,7 +34,7 @@ class BlogPost extends Component {
                 <meta name="description" content={post.meta_description} />
                 <meta name="og:image" content={post.featured_image} />
               </Helmet>
-              <img className="Post-image" src={post.featured_image}></img>
+              <img className="Post-image" alt="post" src={post.featured_image}></img>
               <div className="Post-title-underlay"></div>
               <div className="Post-title">{post.title}</div>
               <div className="Post-body" dangerouslySetInnerHTML={{__html: post.body}} />
@@ -47,7 +43,6 @@ class BlogPost extends Component {
     } else {
       return (
         <div>
-          Loading...
         </div>
       );
     }

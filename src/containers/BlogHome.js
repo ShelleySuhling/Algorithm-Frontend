@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
-import Butter from 'buttercms'
-import *  as butterAPI from '../api.js'
-
 import PostPreview from '../components/PostPreview'
+import *  as butterAPI from '../api.js'
 
 class BlogHome extends Component {
 
@@ -18,7 +15,6 @@ class BlogHome extends Component {
   componentWillMount() {
     var page = 1
     butterAPI.fetchAllPosts(page).then((data) => {
-      console.log(data)
       this.setState({
         loaded: true,
         resp: data
@@ -38,7 +34,6 @@ class BlogHome extends Component {
             return (
               <div key={post.slug}>
                 <PostPreview post={post}/>
-                {/* <Link to={`/post/${post.slug}`}>{post.title}</Link> */}
               </div>
             )
           })}
@@ -49,7 +44,6 @@ class BlogHome extends Component {
     } else {
       return (
         <div>
-          Loading...
         </div>
       )
     }

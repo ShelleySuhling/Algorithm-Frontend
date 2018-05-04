@@ -1,27 +1,18 @@
 import React, { Component } from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-import { withRouter } from 'react-router-dom'
-import FlatButton from 'material-ui/FlatButton';
+import {Card} from 'material-ui/Card';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import { Link } from 'react-router'
-
+import history from '../history';
 
 class PostPreview extends Component {
-
-  constructor(props) {
-    super(props);
-    console.log(props)
-  }
-
 
   render() {
     var {post} = this.props
     return <MuiThemeProvider>
               <Card>
-                <Link className="Card-wrapper" to={`/post/${post.slug}`}>
-                  <img className="Card-featured-image" src={post.featured_image}></img>
+                <div className="Card-wrapper" onClick={()=> history.push(`/post/${post.slug}`)}>
+                  <img className="Card-featured-image" alt="card" src={post.featured_image}></img>
                   <div className="Card-title">{post.title}</div>
-                </Link>
+                </div>
             </Card>
           </MuiThemeProvider>
     }

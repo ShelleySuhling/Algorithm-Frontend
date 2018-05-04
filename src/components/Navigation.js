@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import AppBar from 'material-ui/AppBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {browserHistory} from 'react-router';
-import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
-import RaisedButton from 'material-ui/RaisedButton';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 import Auth from '../auth/Auth.js';
+import history from '../history';
 
 const auth = new Auth();
-
 
 class Navigation extends Component {
 
@@ -28,9 +25,12 @@ class Navigation extends Component {
   };
 
   handleTitleClick = () => {
-    if(browserHistory.getCurrentLocation().pathname == '/'){
+    if(history.location.pathname === '/'){
       window.location.reload();
-    } else browserHistory.push('/')
+    } else {
+      history.push('/')
+      window.location.reload();
+    }
   }
 
   handleHamburgerClick = (event) => {
@@ -51,9 +51,7 @@ class Navigation extends Component {
     auth.logout();
   }
 
-
   render() {
-    console.log('HITHITHIT',auth.isAuthenticated())
     return <MuiThemeProvider>
             <AppBar title="Shelley's Blog" 
               onTitleClick={this.handleTitleClick} 
