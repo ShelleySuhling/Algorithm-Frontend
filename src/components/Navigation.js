@@ -4,10 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MenuItem from 'material-ui/MenuItem';
 import Popover, {PopoverAnimationVertical} from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
-import Auth from '../auth/Auth.js';
 import history from '../history';
 
-const auth = new Auth();
 
 class Navigation extends Component {
 
@@ -33,6 +31,11 @@ class Navigation extends Component {
     }
   }
 
+  toSorting = () => {
+    history.push('/sorting')
+    window.location.reload();
+  }
+
   handleHamburgerClick = (event) => {
     // This prevents ghost click.
     event.preventDefault();
@@ -43,17 +46,9 @@ class Navigation extends Component {
     });
   }
 
-  clickLogin = () => {
-    auth.login();
-  }
-
-  clickLogout = () => {
-    auth.logout();
-  }
-
   render() {
     return <MuiThemeProvider>
-            <AppBar title="Shelley's Blog" 
+            <AppBar title="Personal Project #1" 
               onTitleClick={this.handleTitleClick} 
               onLeftIconButtonClick={this.handleToggle}
               iconClassNameRight="muidocs-icon-navigation-expand-more"/>
@@ -68,11 +63,7 @@ class Navigation extends Component {
               style={{margin: "65px 0"}}
               >
               <Menu>
-                {auth.isAuthenticated() ? <MenuItem primaryText="Log Out" onClick={this.clickLogout}/> : 
-                                          <MenuItem primaryText="Log In" onClick={this.clickLogin}/>}
-                <MenuItem primaryText="Help &amp; feedback" />
-                <MenuItem primaryText="Settings" />
-                <MenuItem primaryText="Sign out" />
+                <MenuItem primaryText="Sorting" onClick={this.toSorting} />
               </Menu>
             </Popover>
           </MuiThemeProvider>

@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PostPreview from '../components/PostPreview'
-import *  as butterAPI from '../api.js'
 
 class BlogHome extends Component {
 
@@ -13,13 +11,12 @@ class BlogHome extends Component {
   }
 
   componentWillMount() {
-    var page = 1
-    butterAPI.fetchAllPosts(page).then((data) => {
-      this.setState({
-        loaded: true,
-        resp: data
-      })
-    })
+    // butterAPI.fetchAllPosts(page).then((data) => {
+    //   this.setState({
+    //     loaded: true,
+    //     resp: data
+    //   })
+    // })
   }
 
   componentWillReceiveProps(nextProps) {
@@ -32,8 +29,7 @@ class BlogHome extends Component {
         <div>
           {this.state.resp.data.map((post) => {
             return (
-              <div key={post.slug}>
-                <PostPreview post={post}/>
+              <div> hey
               </div>
             )
           })}
