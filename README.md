@@ -23,10 +23,4 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 To add a sorting algorithm to this project, add a new function to `\src\algorithms\sortingAlgorithms` with a display function and array as the arguments.
 Everytime the algorithm swaps or changes the position of an element, call the display function.
 
-## References
-
-redux-form validation: https://medium.com/@rajaraodv/adding-a-robust-form-validation-to-react-redux-apps-616ca240c124
-
-
-
 
